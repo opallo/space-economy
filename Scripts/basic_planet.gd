@@ -6,13 +6,17 @@ var planet_type: String
 var planet_size: String
 var planet_conditions: String
 var planet_resources: Dictionary
+var planet_population: int
+var planet_happiness: String
 
-func _init(_name: String, _type: String, _size: String, _conditions: String, _resources: Dictionary):
+func _init(_name: String, _type: String, _size: String, _conditions: String, _resources: Dictionary, _population: int, _happiness: String):
 	planet_name = _name
 	planet_type = _type
 	planet_size = _size
 	planet_conditions = _conditions
 	planet_resources = _resources
+	planet_population = _population
+	planet_happiness = _happiness
 
 #func _init(settings: Dictionary):
 #	planet_name = settings.get("planet_name", "DefaultName")
