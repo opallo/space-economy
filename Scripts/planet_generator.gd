@@ -7,7 +7,6 @@ var planet_types = ["Habitable", "Gas", "Frozen", "Ocean", "Rocky"]
 var planet_sizes = ["Small", "Medium", "Large"]
 var planet_resources = ["Alloys", "Minerals", "Water", "Gas"]
 var planet_conditions = ["Temperate", "Arid", "Frozen", "Toxic"]
-var planet_population
 var planet_happiness_levels = ["Low", "Medium", "High"]
 
 var planet_type_to_resources = {
@@ -21,6 +20,12 @@ var planet_type_to_resources = {
 
 func generate_random_planet() -> Planet:
 	var planet_type = planet_types[randi() % planet_types.size()]
+	var planet_population = randi() % 100 if planet_type == "Habitable" else 0
+	var planet_happiness = (
+		planet_happiness_levels[randi() % planet_happiness_levels.size()]
+		if planet_population > 0
+		else "N/A"
+	)
 
 	var random_planet_attributes = {
 		"planet_name": "Planet_" + str(randi()),  # Simple random name
@@ -28,8 +33,8 @@ func generate_random_planet() -> Planet:
 		"planet_size": planet_sizes[randi() % planet_sizes.size()],
 		"planet_conditions": planet_conditions[randi() % planet_conditions.size()],
 		"planet_resources": planet_type_to_resources[planet_type],
-		"planet_population": randi() % 100,
-		"planet_happiness": planet_happiness_levels[randi() % planet_happiness_levels.size()]
+		"planet_population": planet_population,
+		"planet_happiness": planet_happiness
 	}
 
 	var new_planet = Planet.new(random_planet_attributes)
