@@ -3,26 +3,12 @@ extends Node
 class_name PlanetGenerator
 
 # Possible planet attributes
-var planet_types = ["Rocky", "Ice", "Gas Giant", "Habitable"]
+var planet_types = ["Habitable", "Gas Giant", "Frozen", "Ocean", "Rocky"]
 var planet_sizes = ["Small", "Medium", "Large"]
 var planet_resources = ["Alloys", "Minerals", "Water", "Gas"]
 var planet_conditions = ["Temperate", "Arid", "Frozen", "Toxic"]
 var planet_population
 var planet_happiness_levels = ["Low", "Medium", "High"]
-
-func generate_home_planet() -> Planet:
-	var settings: HomePlanet = HomePlanet.new()
-	var home_planet_attributes = {
-		"planet_name": settings.HOME_NAME,
-		"planet_type": settings.HOME_TYPE,
-		"planet_size": settings.HOME_SIZE,
-		"planet_conditions": settings.HOME_CONDITIONS,
-		"planet_resources": settings.HOME_RESOURCES,
-		"planet_population": settings.HOME_POPULATION,
-		"planet_happiness": settings.HOME_HAPPINESS
-	}
-	var home_planet: Planet = Planet.new(home_planet_attributes)
-	return home_planet
 
 func generate_random_planet() -> Planet:
 	var random_planet_attributes = {
@@ -48,3 +34,17 @@ func generate_resources() -> Dictionary:
 		resources[resource] = amount
 
 	return resources
+
+func generate_home_planet() -> Planet:
+	var settings: HomePlanet = HomePlanet.new()
+	var home_planet_attributes = {
+		"planet_name": settings.HOME_NAME,
+		"planet_type": settings.HOME_TYPE,
+		"planet_size": settings.HOME_SIZE,
+		"planet_conditions": settings.HOME_CONDITIONS,
+		"planet_resources": settings.HOME_RESOURCES,
+		"planet_population": settings.HOME_POPULATION,
+		"planet_happiness": settings.HOME_HAPPINESS
+	}
+	var home_planet: Planet = Planet.new(home_planet_attributes)
+	return home_planet
