@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dllkdprek0gba"]
+[gd_scene load_steps=3 format=3 uid="uid://dllkdprek0gba"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_serd7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhbuw"]
+shadow_color = Color(0, 0, 0, 0.733333)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_serd7")
@@ -19,3 +22,13 @@ offset_left = 259.0
 offset_top = 49.0
 offset_right = 831.0
 offset_bottom = 237.0
+label_settings = SubResource("LabelSettings_jhbuw")
+
+[node name="GeneratePlanetButton" type="Button" parent="CanvasLayer"]
+offset_left = 353.0
+offset_top = 317.0
+offset_right = 503.0
+offset_bottom = 362.0
+text = "Generate Planet"
+
+[connection signal="pressed" from="CanvasLayer/GeneratePlanetButton" to="." method="_on_generate_planet_button_pressed"]
