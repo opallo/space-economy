@@ -17,17 +17,13 @@ var planet_type_to_resources = {
 	"Rocky": {"Water": 10, "Minerals": 200, "Gas": 0, "Alloys": 50}
 }
 
-
-# WIP
 func resource_range(baseline: int, tolerance: float) -> int:
 	var count = baseline + (randi_range(round(baseline * -tolerance), round(baseline * tolerance)))
 	return count
 
-
-# WIP
 func apply_tolerance(resources: Dictionary, tolerance: float):
-	for i in resources.keys():
-		resources.keys()[i].value = resource_range(resources.keys()[i].value, tolerance)
+	for resource in resources.keys():
+		resources[resource] = resource_range(resources[resource], tolerance)
 
 func generate_random_planet() -> Planet:
 	var planet_type = planet_types[randi() % planet_types.size()]
@@ -37,13 +33,16 @@ func generate_random_planet() -> Planet:
 		if planet_population > 0
 		else "N/A"
 	)
+	
+	var resources = planet_type_to_resources[planet_type].duplicate()
+	apply_tolerance(resources, 0.1)
 
 	var random_planet_attributes = {
 		"planet_name": "Planet_" + str(randi()),  # Simple random name
 		"planet_type": planet_type,
 		"planet_size": planet_sizes[randi() % planet_sizes.size()],
 		"planet_conditions": planet_conditions[randi() % planet_conditions.size()],
-		"planet_resources": apply_tolerance(planet_type_to_resources[planet_type], .1),
+		"planet_resources": resources,
 		"planet_population": planet_population,
 		"planet_happiness": planet_happiness
 	}
