@@ -17,8 +17,6 @@ var planet_type_to_resources = {
 	"Rocky": {"Water": 10, "Minerals": 200, "Gas": 0, "Alloys": 50}
 }
 
-<<<<<<< HEAD
-=======
 
 # WIP
 func resource_range(baseline: int, tolerance: float) -> int:
@@ -31,8 +29,6 @@ func apply_tolerance(resources: Dictionary, tolerance: float):
 	for i in resources.keys():
 		resources.keys()[i].value = resource_range(resources.keys()[i].value, tolerance)
 
-
->>>>>>> 2955f0a8063763389355be674a8f5653651bd721
 func generate_random_planet() -> Planet:
 	var planet_type = planet_types[randi() % planet_types.size()]
 	var planet_population = randi() % 100 if planet_type == "Habitable" else 0
