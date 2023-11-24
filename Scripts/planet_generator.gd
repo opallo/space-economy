@@ -17,7 +17,6 @@ var planet_type_to_resources = {
 	"Rocky": {"Water": 10, "Minerals": 200, "Gas": 0, "Alloys": 50}
 }
 
-
 func generate_random_planet() -> Planet:
 	var planet_type = planet_types[randi() % planet_types.size()]
 	var planet_population = randi() % 100 if planet_type == "Habitable" else 0
