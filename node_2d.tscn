@@ -24,6 +24,13 @@ offset_right = 831.0
 offset_bottom = 237.0
 label_settings = SubResource("LabelSettings_jhbuw")
 
+[node name="NextDay" type="Button" parent="CanvasLayer"]
+offset_left = 523.0
+offset_top = 323.0
+offset_right = 673.0
+offset_bottom = 368.0
+text = "Next Day"
+
 [node name="GeneratePlanetButton" type="Button" parent="CanvasLayer"]
 offset_left = 353.0
 offset_top = 317.0
@@ -31,4 +38,5 @@ offset_right = 503.0
 offset_bottom = 362.0
 text = "Generate Planet"
 
+[connection signal="pressed" from="CanvasLayer/NextDay" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="CanvasLayer/GeneratePlanetButton" to="." method="_on_generate_planet_button_pressed"]
