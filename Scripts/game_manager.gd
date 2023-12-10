@@ -5,6 +5,7 @@ var planet_generator: PlanetGenerator = PlanetGenerator.new()
 @onready var debug_label = $CanvasLayer/Label
 @onready var generate_planet_button = $CanvasLayer/GeneratePlanetButton
 
+var current_day = 0
 
 func _ready():
 	randomize()
@@ -27,6 +28,9 @@ func _input(event):
 				debug_input.select_all()
 				debug_input.clear()
 
+func advance_to_next_day():
+	current_day += 1
+	debug_log("End of day " + str(current_day - 1) + ". " + "Advancing to day " + str(current_day) + ".")
 
 func show_planet_summary(planet: Planet):
 	print("Name: " + planet.planet_name)
@@ -51,3 +55,7 @@ func _on_generate_planet_button_pressed():
 
 func debug_log(message: String):
 	debug_label.text += message + "\n"
+
+
+func _on_next_day_pressed():
+	advance_to_next_day()
